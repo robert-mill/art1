@@ -9,12 +9,10 @@ import StarGrid from "@/components/StarGrid";
 import { PrismicNextImage } from "@prismicio/next";
 import { asText } from "@prismicio/client";
 
-type Params = { uid: string };
-
-interface PageProps {
-  params: Promise<{ uid: string }>
-}
-export default async function Page({ params }: PageProps) {
+type Params = {
+  uid: string;
+};
+export default async function Page({ params }: { params: Promise<Params> }) {
   const { uid } = await params;
   const client = createClient();
   const page = await client

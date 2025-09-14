@@ -11,7 +11,7 @@ import { asText } from "@prismicio/client";
 
 type Params = { uid: string };
 
-export default async function Page({ params,}: {
+export default async function Page({ params}: {
   params: { uid: string };
 }) {
   const client = createClient();

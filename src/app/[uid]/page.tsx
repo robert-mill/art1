@@ -13,12 +13,12 @@ type PageParams = {
 };
 
 // Define the page props type
-type PageProps = {
-  params: PageParams;
-  searchParams?: { [key: string]: string | string[] | undefined };
-};
+// type PageProps = {
+//   params: PageParams;
+//   searchParams?: { [key: string]: string | string[] | undefined };
+// };
 
-export default async function Page({ params }: PageProps) {
+export default async function Page({ params}: { params: { uid: string };})  {
   const { uid } = params;
   const client = createClient();
   const page = await client.getByUID("page", uid).catch(() => notFound());

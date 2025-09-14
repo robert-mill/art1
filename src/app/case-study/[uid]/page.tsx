@@ -1,60 +1,67 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-
-import { asText, filter } from "@prismicio/client";
-import { SliceZone } from "@prismicio/react";
+import { PrismicText, SliceZone } from "@prismicio/react";
 
 import { createClient } from "@/prismicio";
 import { components } from "@/slices";
+import Bounded from "@/components/Bounded";
+import StarGrid from "@/components/StarGrid";
+import { PrismicNextImage } from "@prismicio/next";
+import { asText } from "@prismicio/client";
 
-// Define the expected params type for the page
-type PageParams = {
-  uid: string;
-};
+type Params = { uid: string };
 
-// Define the page props type
-type PageProps = {
-  params: PageParams;
-  searchParams?: { [key: string]: string | string[] | undefined };
-};
-
-export default async function Page({ params }: PageProps) {
-  const { uid } = params;
+export default async function Page({ params,}: {
+  params: { uid: string };
+}) {
   const client = createClient();
-  const page = await client.getByUID("page", uid).catch(() => notFound());
+  const page = await client.getByUID("case_study",  params.uid ).catch(() => notFound());
 
-  // <SliceZone> renders the page's slices.
-  return <SliceZone slices={page.data.slices} components={components} />;
+  return (
+    <Bounded as="article">
+      <div className="relative grid place-items-center text-center">
+        <StarGrid />
+        <h1 className="text-7xl font-medium">
+          <PrismicText field={page.data.company} />
+          <p className="text-lg text-yellow-500">Case Study</p>
+        </h1>
+        <p className="mb-4 mt-8 max-w-xl text-lg text-slate-300">
+          <PrismicText field={page.data.description} />
+        </p>
+        <PrismicNextImage
+          field={page.data.logo_image}
+          className="rounded-lg"
+          quality={100}
+        />
+      </div>
+      <div className="mx-auto">
+        <SliceZone slices={page.data.slices} components={components} />
+      </div>
+    </Bounded>
+  );
 }
 
 export async function generateMetadata({
   params,
 }: {
-  params: PageParams;
+  params: Params;
 }): Promise<Metadata> {
-  const { uid } = params;
   const client = createClient();
-  const page = await client.getByUID("page", uid).catch(() => notFound());
+  const page = await client
+    .getByUID("case_study", params.uid)
+    .catch(() => notFound());
 
   return {
-    title: asText(page.data.title),
+    title: `${page.data.meta_title || asText(page.data.company) + " Case Study"}`,
     description: page.data.meta_description,
-    openGraph: {
-      title: page.data.meta_title ?? undefined,
-      images: [{ url: page.data.meta_image.url ?? "" }],
-    },
   };
 }
 
 export async function generateStaticParams() {
   const client = createClient();
+  const pages = await client.getAllByType("case_study");
 
-  // Get all pages from Prismic, except the homepage.
-  const pages = await client.getAllByType("page", {
-    filters: [filter.not("my.page.uid", "home")],
+  return pages.map((page) => {
+    return { uid: page.uid };
   });
-
-  return pages.map((page) => ({
-    uid: page.uid,
-  }));
 }

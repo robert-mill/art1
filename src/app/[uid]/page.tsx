@@ -8,9 +8,7 @@ import { createClient } from "@/prismicio";
 import { components } from "@/slices";
 
 // Define the expected params type for the page
-type PageParams = {
-  uid: string;
-};
+type Params = { uid: string };
 
 // Define the page props type
 // type PageProps = {
@@ -30,7 +28,7 @@ export default async function Page({ params}: { params: { uid: string };})  {
 export async function generateMetadata({
   params,
 }: {
-  params: PageParams;
+  params: Params;
 }): Promise<Metadata> {
   const { uid } = params;
   const client = createClient();

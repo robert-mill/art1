@@ -11,10 +11,12 @@ import { asText } from "@prismicio/client";
 
 type Params = { uid: string };
 
-export default async function Page({ params }: { params: Params }) {
+export default async function Page({ params } : { params: Promise<{ uid: string; }> }) {
+  const { uid } = await params;
+
   const client = createClient();
   const page = await client
-    .getByUID("case_study", params.uid)
+    .getByUID("case_study", uid)
     .catch(() => notFound());
 
   return (

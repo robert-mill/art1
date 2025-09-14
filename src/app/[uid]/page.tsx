@@ -8,7 +8,7 @@ import { createClient } from "@/prismicio";
 import { components } from "@/slices";
 
 // Define the expected params type for the page
-type Params = { uid: string };
+type Params = Promise<{ uid: string }>;
 
 // Define the page props type
 // type PageProps = {
@@ -16,22 +16,21 @@ type Params = { uid: string };
 //   searchParams?: { [key: string]: string | string[] | undefined };
 // };
 
-export default async function Page({ params}: { params: { uid: string }})  {
+export default async function Page({ params }: { params: Params }) {
+const { uid } = await params;
+  
  // const { uid } = params;
   const client = createClient();
-  const page = await client.getByUID("page", params.uid).catch(() => notFound());
+  const page = await client.getByUID("page", uid).catch(() => notFound());
 
   // <SliceZone> renders the page's slices.
   return <SliceZone slices={page.data.slices} components={components} />;
 }
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Params;
-}): Promise<Metadata> {
+export async function generateMetadata({params}: {params: Params }): Promise<Metadata> {
+  const { uid } = await params;
   const client = createClient();
-  const page = await client.getByUID("page", params.uid).catch(() => notFound());
+  const page = await client.getByUID("page", uid).catch(() => notFound());
 
   return {
     title: asText(page.data.title),

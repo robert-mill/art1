@@ -11,9 +11,7 @@ import { asText } from "@prismicio/client";
 
 type Params = { uid: string };
 
-export default async function Page({ params}: {
-  params: { uid: string };
-}) {
+export default async function Page({ params}: { params: { uid: string }}) {
   const client = createClient();
   const page = await client.getByUID("case_study",  params.uid ).catch(() => notFound());
 

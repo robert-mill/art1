@@ -5,18 +5,18 @@ import React from "react";
 import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-import usePrefersReducedMotion from "@/hooks/usePrefersReducedMotion";
+//import usePrefersReducedMotion from "@/hooks/usePrefersReducedMotion";
 import StylizedLogoMark from "./StylizedLogoMark";
 import clsx from "clsx";
 
-import {
-  FaDigitalOcean,
-  FaCloudflare,
-  FaNpm,
-  FaGithub,
-  FaFigma,
-  FaFly,
-} from "react-icons/fa6";
+// import {
+//   FaDigitalOcean,
+//   FaCloudflare,
+//   FaNpm,
+//   FaGithub,
+//   FaFigma,
+//   FaFly,
+// } from "react-icons/fa6";
 
 export default function AnimatedContent({
   slice,
@@ -27,14 +27,14 @@ export default function AnimatedContent({
   //const prefersReducedMotion = usePrefersReducedMotion();
   gsap.registerPlugin(useGSAP);
 
-  const icons = {
-    digitalocean: <FaDigitalOcean />,
-    cloudflare: <FaCloudflare />,
-    npm: <FaNpm />,
-    github: <FaGithub />,
-    figma: <FaFigma />,
-    fly: <FaFly />,
-  };
+  // const icons = {
+  //   digitalocean: <FaDigitalOcean />,
+  //   cloudflare: <FaCloudflare />,
+  //   npm: <FaNpm />,
+  //   github: <FaGithub />,
+  //   figma: <FaFigma />,
+  //   fly: <FaFly />,
+  // };
 
   useGSAP(
     () => {
@@ -116,7 +116,7 @@ export default function AnimatedContent({
             </>
           )}
           <div className="pulsing-icon flex aspect-square shrink-0 items-center justify-center rounded-full border border-blue-50/30 bg-blue-50/25 p-3 text-3xl text-blue-100 opacity-40 md:text-4xl lg:text-5xl">
-            {item.icon && icons[item.icon]}
+            {/* {item.icon && icons[item.icon]} */}
           </div>
           {index !== slice.items.length - 1 && (
             <div

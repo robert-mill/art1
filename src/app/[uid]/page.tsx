@@ -16,10 +16,10 @@ type Params = { uid: string };
 //   searchParams?: { [key: string]: string | string[] | undefined };
 // };
 
-export default async function Page({ params}: { params: { uid: string };})  {
-  const { uid } = params;
+export default async function Page({ params}: { params: { uid: string }})  {
+ // const { uid } = params;
   const client = createClient();
-  const page = await client.getByUID("page", uid).catch(() => notFound());
+  const page = await client.getByUID("page", params.uid).catch(() => notFound());
 
   // <SliceZone> renders the page's slices.
   return <SliceZone slices={page.data.slices} components={components} />;
@@ -30,9 +30,8 @@ export async function generateMetadata({
 }: {
   params: Params;
 }): Promise<Metadata> {
-  const { uid } = params;
   const client = createClient();
-  const page = await client.getByUID("page", uid).catch(() => notFound());
+  const page = await client.getByUID("page", params.uid).catch(() => notFound());
 
   return {
     title: asText(page.data.title),

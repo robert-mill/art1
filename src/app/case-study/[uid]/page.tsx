@@ -7,9 +7,12 @@ import { SliceZone } from "@prismicio/react";
 import { createClient } from "@/prismicio";
 import { components } from "@/slices";
 
-type Params = { uid: string };
+type PageProps = {
+  params: { uid: string };
+  searchParams?: { [key: string]: string | string[] | undefined };
+};
 
-export default async function Page({ params }: { params: Params }) {
+export default async function Page({ params }: PageProps) {
   const { uid } = params;
   const client = createClient();
   const page = await client.getByUID("page", uid).catch(() => notFound());
@@ -21,7 +24,7 @@ export default async function Page({ params }: { params: Params }) {
 export async function generateMetadata({
   params,
 }: {
-  params: Params;
+  params: { uid: string };
 }): Promise<Metadata> {
   const { uid } = params;
   const client = createClient();

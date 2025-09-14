@@ -24,7 +24,7 @@ export default function AnimatedContent({
   slice: Content.IntergrationsSlice;
 }) {
   const container = useRef(null);
-  const prefersReducedMotion = usePrefersReducedMotion();
+  //const prefersReducedMotion = usePrefersReducedMotion();
   gsap.registerPlugin(useGSAP);
 
   const icons = {

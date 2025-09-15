@@ -35,8 +35,8 @@
 								"icon",
 								{
 									"__TYPE__": "FieldContent",
-									"type": "Select",
-									"value": "digitalocean"
+									"value": "draw",
+									"type": "Select"
 								}
 							]
 						]
@@ -48,8 +48,8 @@
 								"icon",
 								{
 									"__TYPE__": "FieldContent",
-									"type": "Select",
-									"value": "cloudflare"
+									"value": "sculpt",
+									"type": "Select"
 								}
 							]
 						]
@@ -61,8 +61,8 @@
 								"icon",
 								{
 									"__TYPE__": "FieldContent",
-									"type": "Select",
-									"value": "npm"
+									"value": "php",
+									"type": "Select"
 								}
 							]
 						]
@@ -74,8 +74,8 @@
 								"icon",
 								{
 									"__TYPE__": "FieldContent",
-									"type": "Select",
-									"value": "github"
+									"value": "draw",
+									"type": "Select"
 								}
 							]
 						]
@@ -87,8 +87,8 @@
 								"icon",
 								{
 									"__TYPE__": "FieldContent",
-									"type": "Select",
-									"value": "figma"
+									"value": "paint",
+									"type": "Select"
 								}
 							]
 						]
@@ -100,8 +100,8 @@
 								"icon",
 								{
 									"__TYPE__": "FieldContent",
-									"type": "Select",
-									"value": "github"
+									"value": "paint",
+									"type": "Select"
 								}
 							]
 						]
@@ -113,8 +113,8 @@
 								"icon",
 								{
 									"__TYPE__": "FieldContent",
-									"type": "Select",
-									"value": "cloudflare"
+									"value": "draw",
+									"type": "Select"
 								}
 							]
 						]
@@ -126,8 +126,8 @@
 								"icon",
 								{
 									"__TYPE__": "FieldContent",
-									"type": "Select",
-									"value": "npm"
+									"value": "php",
+									"type": "Select"
 								}
 							]
 						]
@@ -139,8 +139,8 @@
 								"icon",
 								{
 									"__TYPE__": "FieldContent",
-									"type": "Select",
-									"value": "fly"
+									"value": "paint",
+									"type": "Select"
 								}
 							]
 						]

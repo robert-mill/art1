@@ -741,7 +741,7 @@ export interface IntergrationsSliceDefaultPrimaryIconsItem {
    * - **Documentation**: https://prismic.io/docs/fields/select
    */
   icon: prismic.SelectField<
-    "digitalocean" | "cloudflare" | "npm" | "github" | "figma" | "fly"
+    "paint" | "draw" | "sculpt" | "php" | "java" | "css"
   >;
 }
 

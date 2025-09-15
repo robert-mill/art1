@@ -10,14 +10,15 @@ import Image from "next/image";
 import background from "./background.jpg";
 import React, { JSX } from "react";
 import { 
-    FaGithub, 
-    FaNpm, 
-    FaFly,
-    FaDigitalOcean, 
-    FaCloudflare, 
-    FaFigma  
+    FaPalette, 
+    FaPencil, 
+    FaPhp,
+    FaJava, 
+    FaCss3,
 } from "react-icons/fa6";
-import StylizedLogoMark from "./StylizedLogoMark";
+import { GiColombianStatue } from "react-icons/gi";
+//import StylizedLogoMark from "./StylizedLogoMark";
+import SvgIcon from "./SvgIcon";
 import clsx from "clsx";
 
 
@@ -35,12 +36,12 @@ export type IntegrationsProps = SliceComponentProps<Content.IntergrationsSlice>;
 const Integrations = ({ slice }: IntegrationsProps): JSX.Element => {
   const icons={
 
-      github:<FaGithub/>,
-      npm:<FaNpm/>,
-      fly:<FaFly/>,
-      digitalocean:<FaDigitalOcean/>, 
-      cloudflare:<FaCloudflare/> ,
-      figma:<FaFigma/>
+      paint:<FaPalette/>,
+      draw:<FaPencil/>,
+      sculpt:<GiColombianStatue/>,
+      php:<FaPhp/>,
+      java:<FaJava/>, 
+      css:<FaCss3/> ,
   }
   
   return (
@@ -80,7 +81,7 @@ const Integrations = ({ slice }: IntegrationsProps): JSX.Element => {
               {
                 index === Math.floor(slice.primary.icons.length/2) && (
                   <>
-                  <StylizedLogoMark/>
+                  <SvgIcon/>
                     <div className="signal-line rotate-180 bg-gradient-to-t" />
                   </>                
                 )}

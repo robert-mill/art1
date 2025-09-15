@@ -42,12 +42,12 @@
                   "label": "Icon",
                   "placeholder": "",
                   "options": [
-                    "digitalocean",
-                    "cloudflare",
-                    "npm",
-                    "github",
-                    "figma",
-                    "fly"
+                    "paint",
+                    "draw",
+                    "sculpt",
+                    "php",
+                    "java",
+                    "css"
                   ]
                 }
               }

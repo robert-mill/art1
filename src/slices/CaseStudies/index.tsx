@@ -32,9 +32,15 @@ const CaseStudies: FC<CaseStudiesProps> = async ({ slice }) => {
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >
-      <h2 className="max-w-2xl text-balance text-center text-5xl fint-medium md:text-7xl">
-        <PrismicText field={slice.primary.heading} />
-      </h2>
+      <PrismicRichText field={slice.primary.heading} components={{
+              heading2:({children})=>(
+                  <h2 className="text-balance text-center text-5xl font-medium md:text-7xl ">{children}</h2>
+                ),
+                em:({children})=>(
+                  <em className="bg-no-repeat bg-cover bg-center outline-orange-500 bg-clip-text not-italic text-transparent"
+          style={{backgroundImage:"url(/fire.gif)"}}>{children}</em>
+                )
+            }}/>
       <div className="mx-auto mt-6 max-w-md text-balance text-center text-slate-300">
         <PrismicRichText field={slice.primary.body} />
       </div>

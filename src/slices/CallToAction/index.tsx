@@ -1,5 +1,5 @@
 import { Content } from "@prismicio/client";
-import { PrismicText, SliceComponentProps } from "@prismicio/react";
+import { PrismicRichText,  SliceComponentProps } from "@prismicio/react";
 import PlainLogo from "./PlainLogo";
 import Bounded from "@/components/Bounded";
 import ButtonLink from "@/components/ButtonLink";
@@ -26,8 +26,16 @@ const CallToAction = ({ slice }: CallToActionProps): JSX.Element => {
         <PlainLogo />
       </div>
 
-      <div className="mt-8 max-w-xl text-balance text-5xl">
-        <PrismicText field={slice.primary.heading} />
+      <div className="relative mt-8 max-w-xl text-balance text-5xl">
+        <PrismicRichText field={slice.primary.heading} components={{
+                heading2:({children})=>(
+                    <h2 className="text-balance text-center text-5xl font-medium md:text-7xl ">{children}</h2>
+                  ),
+                  em:({children})=>(
+                    <em className="bg-no-repeat bg-cover bg-center outline-orange-500 bg-clip-text not-italic text-transparent"
+            style={{backgroundImage:"url(/fire.gif)"}}>{children}</em>
+                  )
+              }}/>
       </div>
 
       <ButtonLink field={slice.primary.button_link} className="mt-6">

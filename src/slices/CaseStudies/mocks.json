@@ -9,7 +9,7 @@
 					{
 						"type": "heading2",
 						"content": {
-							"text": "Complex"
+							"text": "Field"
 						}
 					}
 				]
@@ -34,8 +34,8 @@
 							[
 								"case_study",
 								{
-									"__TYPE__": "LinkContent",
 									"key": "69bab70d-ec0d-43fb-88a3-8c08a8ef5e23",
+									"__TYPE__": "LinkContent",
 									"value": {
 										"__TYPE__": "DocumentLink",
 										"id": "mock_document_id"

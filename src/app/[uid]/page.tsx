@@ -1,23 +1,58 @@
+// import { Metadata } from "next";
+ import { notFound } from "next/navigation";
 
-type ParamProps = {
+ import { asText, filter } from "@prismicio/client";
+ import { SliceZone } from "@prismicio/react";
+
+ import { createClient } from "@/prismicio";
+ import { components } from "@/slices";
+
+type Params = {
   params: Promise<{ uid: string }>;
 };
 
-export default async function Page({ params }: ParamProps) {
+export default async function Page({ params }: Params) {
   const uid = (await params).uid;
+  const client = createClient();
+  const page = await client.getByUID("page", uid).catch(() => notFound());
+  
   return (
-    <div>Hi {uid}</div>
+    <SliceZone slices={page.data.slices} components={components} />
   );
 
 }
-// import { Metadata } from "next";
-// import { notFound } from "next/navigation";
 
-// import { asText, filter } from "@prismicio/client";
-// import { SliceZone } from "@prismicio/react";
+ export async function generateMetadata({ params }: Params) {
+   const { uid } = await params;
+   const client = createClient();
+   const page = await client.getByUID("page", uid).catch(() => notFound());
 
-// import { createClient } from "@/prismicio";
-// import { components } from "@/slices";
+   return {
+     title: asText(page.data.title),
+     description: page.data.meta_description,
+     openGraph: {
+       title: page.data.meta_title ?? undefined,
+       images: [{ url: page.data.meta_image.url ?? "" }],
+     },
+   };
+ }
+
+export async function generateStaticParams() {
+   const client = createClient();
+   const pages = await client.getAllByType("page", {
+     filters: [filter.not("my.page.uid", "home")],
+   });
+
+   return pages.map((page) => ({
+     uid: page.uid,
+   }));
+ }
+
+
+
+
+
+
 
 // // Define the expected params type for the page
 // type Params = Promise<{ uid: string }>;

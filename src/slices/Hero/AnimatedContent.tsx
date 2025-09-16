@@ -16,7 +16,7 @@ export default function AnimatedContent({slice}: {slice:Content.HeroSlice}) {
   gsap.registerPlugin(useGSAP);
   useGSAP(()=>{
     if(prefersReducedMotion){
-        gsap.set(".hero__heading, .hero__body, hero__button, .hero__image, hero__glow", {opacity:1})
+        gsap.set(".hero__heading, .hero__body, .hero__button, .hero__image, .hero__glow", {opacity:1})
         return;
     }
 

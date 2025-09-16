@@ -20,6 +20,7 @@ export default function AnimatedContent({slice}:{slice: Content.IntergrationsSli
   const container = useRef(null);
   const prefersReducedMotion = usePrefersReducedMotion();
   gsap.registerPlugin(useGSAP);
+
     const icons={
   
         paint:<FaPalette/>,
@@ -31,6 +32,11 @@ export default function AnimatedContent({slice}:{slice: Content.IntergrationsSli
     }
 
     useGSAP(()=>{
+        if(prefersReducedMotion){
+        gsap.set(".pulsing-logo, .signal-line, .pulsing-icon", {opacity:1})
+        return;
+        }
+
         const tl =gsap.timeline({
             repeat:-1,
             defaults: {ease:"power2.inOut"}

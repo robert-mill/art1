@@ -15,18 +15,14 @@ export type CaseStudiesProps = SliceComponentProps<Content.CaseStudiesSlice>;
  * Component for "CaseStudies" Slices.
  */
 const CaseStudies: FC<CaseStudiesProps> = async ({ slice }) => {
- console.log("🚀 ~ CaseStudies ~ slice:", slice)
- 
   const client = createClient();
   const caseStudies = await Promise.all(
     slice.primary.case_study.map(async (item)=>{
-      
       if(isFilled.contentRelationship(item.case_study)){
         return await client.getByID<Content.CaseStudyDocument>(item.case_study.id)
       }
     })
   )
-  console.log("🚀 ~ CaseStudies ~ caseStudies:", caseStudies)
   return (
     <Bounded
       data-slice-type={slice.slice_type}

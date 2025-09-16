@@ -8,6 +8,7 @@ const SvgIcon = () => (
     height='96'
     version='1.1'
     viewBox='0 0 96 96'
+    className="pulsing-logo"
   >
     <g>
       <image

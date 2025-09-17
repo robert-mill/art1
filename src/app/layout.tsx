@@ -1,14 +1,27 @@
-import './globals.css'
-import {DM_Sans} from 'next/font/google';
+import { Raleway } from "next/font/google";
+import localFont from "next/font/local";
 import { PrismicPreview } from "@prismicio/next";
 import { repositoryName } from "@/prismicio";
+import './globals.css'
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-const dmSans = DM_Sans({
-  subsets: ['latin'],
-  display:'swap',
-  variable: '--font-dm-sans'
-})
+
+
+const raleway = Raleway({
+  variable: "--font-raleway",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const gambarino = localFont({
+  src: "./gambarino.woff2",
+  display: "swap",
+  variable: "--font-gambarino",
+});
+
+
+
+
 
 export default function RootLayout({
   children,
@@ -16,7 +29,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={dmSans.variable}>
+    <html lang="en" className={`${raleway.variable} ${gambarino.variable} antialiased`}>
       <body className='bg-[#070815] text-white'>
         <Header/>
         <main>

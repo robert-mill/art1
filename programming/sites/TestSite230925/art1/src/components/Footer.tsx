@@ -53,7 +53,7 @@ export const Footer = () => {
             </li>
             <li>
               <a href="#" className="hover:text-white">
-                Privacy Policy.
+                Privacy Policy
               </a>
             </li>
           </ul>

@@ -1,0 +1,103 @@
+{
+  "format": "page",
+  "id": "artwork",
+  "label": "Artwork",
+  "repeatable": true,
+  "status": true,
+  "json": {
+    "Main": {
+      "uid": {
+        "type": "UID",
+        "config": {
+          "label": "UID"
+        }
+      },
+      "title": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Title",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "single": "heading1"
+        }
+      },
+      "thumb_image": {
+        "type": "Image",
+        "config": {
+          "label": "Thumb Image",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
+      "feature_image": {
+        "type": "Image",
+        "config": {
+          "label": "Feature Image",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
+      "description": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Description",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph,strong,em"
+        }
+      },
+      "price": {
+        "type": "Number",
+        "config": {
+          "label": "Price",
+          "placeholder": "(in pennies)"
+        }
+      },
+      "media": {
+        "type": "Select",
+        "config": {
+          "label": "Media",
+          "placeholder": "",
+          "options": ["oils", "watercolours", "drawings", "other"],
+          "default_value": "oils"
+        }
+      },
+      "subject": {
+        "type": "Select",
+        "config": {
+          "label": "Subject",
+          "placeholder": "",
+          "options": ["people", "animals", "buildings", "landscape"],
+          "default_value": "people"
+        }
+      },
+      "availability": {
+        "type": "Text",
+        "config": {
+          "label": "availability",
+          "placeholder": ""
+        }
+      },
+      "slices": {
+        "type": "Slices",
+        "fieldset": "Slice Zone",
+        "config": {
+          "choices": {}
+        }
+      }
+    },
+    "SEO & Metadata": {
+      "meta_image": {
+        "config": {
+          "constraint": {
+            "height": 1260,
+            "width": 2400
+          },
+          "label": "Meta Image",
+          "thumbnails": []
+        },
+        "type": "Image"
+      }
+    }
+  }
+}

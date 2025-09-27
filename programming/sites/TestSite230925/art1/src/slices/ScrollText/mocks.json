@@ -1,0 +1,25 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"eyebrow": {
+				"__TYPE__": "FieldContent",
+				"value": "space",
+				"type": "Text"
+			},
+			"text": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Ipsum ut deserunt duis ipsum sunt labore adipisicing sunt deserunt in duis. Proident fugiat occaecat consequat ad exercitation adipisicing velit culpa cupidatat ut. Minim dolore veniam irure duis nulla tempor velit pariatur est aliquip et duis sint."
+						}
+					}
+				]
+			}
+		},
+		"items": []
+	}
+]
